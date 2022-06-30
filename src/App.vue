@@ -3,7 +3,7 @@
     <h1>ALT-Calendar</h1>
   </header>
 
-  <main style="display:flex;column-gap:10px;">
+  <main class="app-content">
     <div>
       <CalendarWidget :startAt.sync="startDate" :businessDays.sync="businessDays" :holidays.sync="holidays">
       </CalendarWidget>
@@ -32,4 +32,9 @@ const applySettings = (newSettings) => {
 
 <style>
 @import './assets/base.scss';
+
+.app-content {
+  display: flex;
+  column-gap: 10px;
+}
 </style>
