@@ -5,9 +5,15 @@
 
   <main class="app-content">
     <div>
-      <CalendarWidget :startAt.sync="startDate" :workdays.sync="workdays" :holidays.sync="holidays">
-      </CalendarWidget>
+      <CalendarWidget 
+        :startAt.sync="startDate" 
+        :workdays.sync="workdays" 
+        :holidays.sync="holidays"
+      ></CalendarWidget>
       <SettingsWidget @apply="applySettings"></SettingsWidget>
+      <footer class="app-footer">
+        by <a href="https://github.com/parkejunior" target="_blank">parkejunior</a>
+      </footer>
     </div>
     <DaysWidget v-if="false"></DaysWidget>
   </main>
@@ -36,5 +42,15 @@ const applySettings = (newSettings) => {
 .app-content {
   display: flex;
   column-gap: 10px;
+}
+
+.app-footer, 
+.app-footer * {
+  color: #ffffff66;
+  font-style: italic;
+}
+
+.app-footer:hover * {
+  color: #fff;
 }
 </style>
