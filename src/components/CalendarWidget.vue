@@ -223,4 +223,11 @@ button.calendar-switcher {
 .calendar-next {
   border-radius: 0px 15px 15px 0px;
 }
+
+@media only screen and (max-width: 500px) {
+  .calendar td {
+    padding: 7px 10px;
+    font-size: .85rem;
+  }
+}
 </style>
