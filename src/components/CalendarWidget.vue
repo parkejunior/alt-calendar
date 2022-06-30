@@ -148,7 +148,7 @@ function isWorkday(date) {
 }
 
 .calendar .day-current {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
   color: black;
 }
 
