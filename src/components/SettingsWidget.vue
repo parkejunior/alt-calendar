@@ -7,9 +7,9 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label">Business Days</label>
-        <input type="checkbox" id="switchBusinessDays" v-model="businessDays" />
-        <label for="switchBusinessDays" class="switch-label">Business Days Toggle</label>
+        <label class="form-label">Workdays</label>
+        <input type="checkbox" id="switchWorkdays" v-model="workdays" />
+        <label for="switchWorkdays" class="switch-label">Workdays Days Toggle</label>
       </div>
 
       <div class="form-group" v-if="false">
@@ -26,13 +26,13 @@ import { ref, watchEffect } from "vue"
 
 const emit = defineEmits(['apply'])
 const startDate = ref('')
-const businessDays = ref(false)
+const workdays = ref(false)
 const holidays = ref(false)
 
 watchEffect(() => {
   emit('apply', {
     startDate: startDate.value,
-    businessDays: businessDays.value,
+    workdays: workdays.value,
     holidays: holidays.value,
   })
 })

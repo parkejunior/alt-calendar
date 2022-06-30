@@ -5,7 +5,7 @@
 
   <main class="app-content">
     <div>
-      <CalendarWidget :startAt.sync="startDate" :businessDays.sync="businessDays" :holidays.sync="holidays">
+      <CalendarWidget :startAt.sync="startDate" :workdays.sync="workdays" :holidays.sync="holidays">
       </CalendarWidget>
       <SettingsWidget @apply="applySettings"></SettingsWidget>
     </div>
@@ -20,12 +20,12 @@ import SettingsWidget from '@/components/SettingsWidget.vue'
 import { ref } from "vue"
 
 const startDate = ref('')
-const businessDays = ref(false)
+const workdays = ref(false)
 const holidays = ref(false)
 
 const applySettings = (newSettings) => {
   startDate.value = newSettings.startDate
-  businessDays.value = newSettings.businessDays
+  workdays.value = newSettings.workdays
   holidays.value = newSettings.holidays
 }
 </script>

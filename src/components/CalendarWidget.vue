@@ -35,7 +35,7 @@ const props = defineProps({
   startAt: {
     type: String,
   },
-  businessDays: Boolean,
+  workdays: Boolean,
   holidays: Boolean,
 })
 
@@ -63,29 +63,12 @@ const currentYear = 2022
 const calendar = new c.Calendar();
 const today = new Date;
 let startDate = new Date
-let businessDays = false;
+let workdays = false;
 let holidays = false;
-
-/*watch(() => props.startAt, (startAt) => {
-  startDate = new Date(startAt);
-
-  console.log(startAt, "OK")
-})
-watch(() => props.businessDays, (businessDays) => {
-  //businessDays = businessDays;
-
-  console.log("OK")
-})
-watch(() => props.holidays, (holidays) => {
-  //holidays = holidays;
-})
-watch(props.startAt, (startAt) => {
-  startDate = new Date(startAt);
-})*/
 
 watchEffect(() => {
   startDate = new Date(props.startAt || null);
-  businessDays = props.businessDays || false;
+  workdays = props.workdays || false;
   holidays = props.holidays || false;
 
   updateCalendar()
@@ -137,9 +120,9 @@ const isActive = (year, month, day) => {
   let active = false
 
   if (
-    currentDate.getTime() > startDate.getTime() &&
-    (!businessDays || !isBusinessDay(currentDate)) &&
-    datesBetween(currentDate, startDate) % 2 === 0
+    currentDate.getTime() > startDate.getTime() && // Active on after startDate
+    (!workdays || !isWorkday(currentDate)) &&      // Active if is workday
+    datesBetween(currentDate, startDate) % 2 === 0 // Active each 2 days
   ) {
     active = true
   }
@@ -154,7 +137,7 @@ function datesBetween(date1, date2) {
   return Math.floor((date1 - date2) / (1000 * 3600 * 24))
 }
 
-function isBusinessDay(date) {
+function isWorkday(date) {
   return date.getDay() == 6 || date.getDay() == 0
 }
 </script>
